@@ -7,20 +7,18 @@
 static int CompareByName(const void * s1, const void * s2) {
 
   // Convert voids to known types
-  const Student* ptr1 = (const Student*) s1;
-  const Student* ptr2 = (const Student*) s2;
+  const Student** ptr1 = (const Student**) s1;
+  const Student** ptr2 = (const Student**) s2;
 
   // Get value from address
-  const char *str1 = ptr1 -> name;
-  const char *str2 = ptr2 -> name;
+  const Student *str1 = *ptr1;
+  const Student *str2 = *ptr2;
 
 
   // Since names are strings (i.e. array of chars)
   // use strcmp instead of comparing directly
-  return strcmp(str1, str2);
+  return strcmp(str1 -> name, str2 -> name);
   
-  fprintf(stderr, "Name Comp error\n"); //REMOVE*******************************
-
   
 }
 #endif
@@ -41,19 +39,15 @@ void SortDatabaseByName(StudentDatabase * studb) {
 static int CompareByAge(const void * s1, const void * s2) {
 
   // convert void to known type
-  const Student* ptr1 = (const Student*) s1;
-  const Student* ptr2 = (const Student*) s2;
+  const Student** ptr1 = (const Student**) s1;
+  const Student** ptr2 = (const Student**) s2;
 
   // get value from address
-  const int val1 = ptr1 -> age;
-  const int val2 = ptr2 -> age;
+  const Student * n1 = * ptr1;
+  const Student * n2 = * ptr2;
   
-  fprintf(stderr, "val1 %d\n", val1); // **********************************
-  //fprintf(stderr, "val2 %d\n", val2); //*************************************
-  
-
-  return val1 - val2;
-
+  return (n1 -> age - n2 -> age);
+ 
 }
 #endif
 
